@@ -8,7 +8,6 @@ interface FooterCol {
   links?: Array<{ label: string; to: string }>;
   content?: {
     location: string;
-    hours: string;
     phone?: string;
     email?: string;
   };
@@ -38,7 +37,6 @@ const cols: FooterCol[] = [
       location: "StylenStitches Atelier\nPlot 14, Aminu Kano Crescent\nWuse 2, Abuja",
       phone: "+234 701 550 7217",
       email: "hello@stylenstitches.com",
-      hours: "By appointment\nTue — Sat · 10:00 — 18:00",
     },
   },
 ];
@@ -58,14 +56,14 @@ export function Footer() {
         whileInView="visible"
         viewport={inView}
         variants={stagger}
-        className="max-w-[1400px] mx-auto px-6 md:px-12 py-20 grid grid-cols-1 md:grid-cols-[1.6fr_1fr_1fr_1fr] gap-12"
+        className="max-w-[1400px] mx-auto px-6 md:px-12 py-20 grid grid-cols-1 md:grid-cols-[1.6fr_1fr_1fr_1fr] gap-12 font-semibold"
       >
         <motion.div variants={fadeUp}>
           <Link to="/" className="wordmark" style={{ color: "var(--cream)" }}>
             STYLENSTITCHES
           </Link>
           <p
-            className="mt-6 text-[13px] max-w-xs"
+            className="mt-6 text-[15px] max-w-xs font-semibold"
             style={{ color: "rgba(250,247,242,0.55)", lineHeight: 1.9 }}
           >
             Handcrafted kaftans, abayas & bespoke occasion wear - where modesty becomes a language of luxury.
@@ -90,7 +88,7 @@ export function Footer() {
         {cols.map((c) => (
           <motion.div key={c.title} variants={fadeUp}>
             <h4
-              className="text-[10px] tracking-[5px] uppercase mb-6"
+              className="text-[12px] tracking-[5px] uppercase mb-6 font-semibold"
               style={{ color: "var(--dusty-gold)", fontFamily: "var(--font-body)" }}
             >
               {c.title}
@@ -98,42 +96,28 @@ export function Footer() {
             {c.content ? (
               <div className="space-y-6">
                 <p
-                  className="text-[12px] whitespace-pre-line"
+                  className="text-[14px] whitespace-pre-line font-semibold"
                   style={{ color: "rgba(250,247,242,0.55)", lineHeight: 1.8 }}
                 >
-                  {c.content.location}
+                  Address: {c.content.location}
                 </p>
-                <div>
-                  <p
-                    className="text-[12px] font-semibold mb-2"
-                    style={{ color: "rgba(250,247,242,0.85)" }}
-                  >
-                    By appointment
-                  </p>
-                  <p
-                    className="text-[12px]"
-                    style={{ color: "rgba(250,247,242,0.55)" }}
-                  >
-                    {c.content.hours.split("\n")[1]}
-                  </p>
-                </div>
                 <div className="space-y-2">
                   {c.content.phone && (
                     <a
                       href="tel:+2347015507217"
-                      className="block text-[12px] transition-colors hover:text-white"
+                      className="block text-[14px] font-semibold transition-colors hover:text-white"
                       style={{ color: "rgba(250,247,242,0.55)" }}
                     >
-                      {c.content.phone}
+                      Phone no: {c.content.phone}
                     </a>
                   )}
                   {c.content.email && (
                     <a
                       href={`mailto:${c.content.email}`}
-                      className="block text-[12px] transition-colors hover:text-white"
+                      className="block text-[14px] font-semibold transition-colors hover:text-white"
                       style={{ color: "rgba(250,247,242,0.55)" }}
                     >
-                      {c.content.email}
+                      Email: {c.content.email}
                     </a>
                   )}
                 </div>
@@ -144,7 +128,7 @@ export function Footer() {
                   <li key={l.label}>
                     <Link
                       to={l.to}
-                      className="text-[12px] transition-colors hover:text-white"
+                      className="text-[14px] font-semibold transition-colors hover:text-white"
                       style={{ color: "rgba(250,247,242,0.55)" }}
                     >
                       {l.label}
@@ -158,16 +142,16 @@ export function Footer() {
       </motion.div>
 
       <div className="border-t" style={{ borderColor: "rgba(250,247,242,0.06)" }}>
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-6 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-6 grid grid-cols-1 md:grid-cols-3 items-center gap-8">
           <div className="text-center md:text-left">
-            <p className="text-[11px]" style={{ color: "rgba(250,247,242,0.4)" }}>
+            <p className="text-[13px] font-semibold" style={{ color: "rgba(250,247,242,0.4)" }}>
               © 2026 StylenStitches. Crafted in Abuja.
             </p>
-            <p className="mt-2 text-[11px]" style={{ color: "rgba(250,247,242,0.4)" }}>
-              Designed by Seraczone Technology Limited.
-            </p>
           </div>
-          <div className="flex flex-wrap gap-6 justify-center text-[11px]">
+          <p className="text-center text-[13px] font-semibold" style={{ color: "rgba(250,247,242,0.55)" }}>
+            Designed by Seraczone Technology Ltd.
+          </p>
+          <div className="flex flex-wrap gap-6 justify-center md:justify-end text-[13px] font-semibold">
             {additionalLinks.map((link) => (
               <Link
                 key={link.label}

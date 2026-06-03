@@ -3,6 +3,10 @@ import { motion } from "framer-motion";
 import { Layout } from "@/components/Layout";
 import { CraftingStory } from "@/components/CraftingStory";
 import { fadeUp, stagger, slideLeft, slideRight, inView } from "@/lib/animations";
+import blueBubu from "@/assets/p-blue-bubu.jpg";
+import blushBubu from "@/assets/p-blush-bubu.jpg";
+import tiedye from "@/assets/p-tiedye.jpg";
+import whiteLook from "@/assets/p-white.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -16,6 +20,13 @@ export const Route = createFileRoute("/about")({
 });
 
 function AboutPage() {
+  const storyImages = [
+    { src: blueBubu, alt: "Light blue StylenStitches bubu" },
+    { src: blushBubu, alt: "Pink StylenStitches bubu" },
+    { src: tiedye, alt: "Tie-dye StylenStitches kaftan" },
+    { src: whiteLook, alt: "White StylenStitches look" },
+  ];
+
   return (
     <Layout>
       <div style={{ background: "var(--cream)" }}>
@@ -42,6 +53,32 @@ function AboutPage() {
           >
             StylenStitches exists to celebrate the modern woman who values modesty without compromising on elegance, quality, and personal expression.
           </motion.p>
+        </motion.div>
+      </section>
+
+      <section className="pb-20 px-6 md:px-12">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={inView}
+          variants={stagger}
+          className="max-w-[1400px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5"
+        >
+          {storyImages.map((image, index) => (
+            <motion.div
+              key={image.alt}
+              variants={index % 2 === 0 ? slideLeft : slideRight}
+              className="overflow-hidden aspect-[3/4]"
+              style={{ background: "var(--linen)" }}
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                loading="lazy"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </motion.div>
+          ))}
         </motion.div>
       </section>
 
