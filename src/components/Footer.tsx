@@ -159,9 +159,14 @@ export function Footer() {
 
       <div className="border-t" style={{ borderColor: "rgba(250,247,242,0.06)" }}>
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-6 flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="text-[11px]" style={{ color: "rgba(250,247,242,0.4)" }}>
-            © 2026 StylenStitches. Crafted in Abuja.
-          </p>
+          <div className="text-center md:text-left">
+            <p className="text-[11px]" style={{ color: "rgba(250,247,242,0.4)" }}>
+              © 2026 StylenStitches. Crafted in Abuja.
+            </p>
+            <p className="mt-2 text-[11px]" style={{ color: "rgba(250,247,242,0.4)" }}>
+              Designed by Seraczone Technology Limited.
+            </p>
+          </div>
           <div className="flex flex-wrap gap-6 justify-center text-[11px]">
             {additionalLinks.map((link) => (
               <Link
